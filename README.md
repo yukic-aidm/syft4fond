@@ -56,6 +56,22 @@ Options:
                               7. Realizability (0,1)
 ```
 
+To transform PDDL into DFA, you have to provide both the path to the planning domain and planning problem, e.g., `domain.pddl` and `p2.pddl` (see the `Benchmarks/BlocksWorld` folder). For instance, the command:
+
+```
+./pddl2dfa -d domain.pddl -p p2.pddl -a 1 -t 1 -i 1
+```
+
+Constructs the DFA of the planning domain with specification `domain.pddl` and problem `p2.pddl`, using the direct PDDL to DFA algorithm, prints the domain, and executes the constructed DFA in interactive mode. 
+
+To perform synthesis in PDDL domains, you have to provide the path to both the planning domain and problem specifications. For instance, the command: 
+
+```
+./syft4fond -d domain.pddl -p p2.pddl -i 1
+```
+
+Synthesize a strategy for the FOND planning problem obtained from `domain.pddl` and `p2.pddl`, and executes the synthesized strategy in interactive mode. 
+
 # Build from source
 
 Compilation instruction using CMake (https://cmake.org/). We recommend using Ubuntu 22.04 LTS.
