@@ -18,6 +18,11 @@ find_package(mona REQUIRED)
 find_package(spot REQUIRED)
 
 set(LYDIA_DIR ${PROJECT_SOURCE_DIR}/submodules/lydia)
+
+# Disable Lydia tests/benchmarks
+set(LYDIA_ENABLE_TESTS OFF CACHE BOOL "Disable Lydia tests" FORCE)
+set(LYDIA_ENABLE_APP OFF CACHE BOOL "Disable Lydia CLI" FORCE)
+set(LYDIA_ENABLE_BENCHMARK OFF CACHE BOOL "Disable Lydia benchmarks" FORCE)
 add_subdirectory(${LYDIA_DIR})
 set(LYDIA_LIBRARIES ${LYDIA_DIR})
 
@@ -25,7 +30,13 @@ set(LYDIA_LIBRARIES ${LYDIA_DIR})
 #add_subdirectory(${COMPOSITIONAL_SYN_DIR})
   
 set(LYDIA_INCLUDE_DIR ${LYDIA_DIR}/lib/include)
-set(LYDIA_THIRD_PARTY_INCLUDE_PATH "${LYDIA_DIR}/third_party/spdlog/include;${LYDIA_DIR}/third_party/CLI11/include;/usr/local/include;/usr/local/include;/usr/local/include;${LYDIA_DIR}/third_party/google/benchmark/include;/usr/include")
+set(LYDIA_THIRD_PARTY_INCLUDE_PATH
+    "${LYDIA_DIR}/third_party/spdlog/include;"
+    "${LYDIA_DIR}/third_party/CLI11/include;"
+    "/usr/local/include;"
+    "/opt/homebrew/include;"
+    "${LYDIA_DIR}/third_party/google/benchmark/include;"
+    "/usr/include")
 
 set(EXT_LIBRARIES_PATH lydia ${CUDD_LIBRARIES} ${MONA_DFA_LIBRARIES} ${MONA_BDD_LIBRARIES} ${MONA_MEM_LIBRARIES})
 set(EXT_INCLUDE_PATH ${LYDIA_INCLUDE_DIR} ${LYDIA_THIRD_PARTY_INCLUDE_PATH} ${CUDD_INCLUDE_DIRS} ${MONA_MEM_INCLUDE_DIRS} ${MONA_BDD_INCLUDE_DIRS} ${MONA_DFA_INCLUDE_DIRS})

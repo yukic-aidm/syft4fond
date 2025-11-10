@@ -1,0 +1,31 @@
+# CMake build directories
+/build/
+/Syft/build/
+
+# Local install prefix we used for Syft libs/binaries
+/local/
+/Syft/local/
+
+# Common CMake generator outputs if someone builds in-place
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+*.cmake
+
+# Object/library/binary artifacts
+*.o
+*.a
+*.la
+*.lo
+*.dylib
+*.so
+*.dll
+*.exe
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+/Benchmarks/
